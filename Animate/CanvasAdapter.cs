@@ -42,16 +42,6 @@ namespace Animate
         {
             Canvas.SetLeft(element, length);
         }
-        private void setscaling()
-        {
-            var test = SystemParameters.FullPrimaryScreenHeight;
-
-            //if (source != null)
-            //{
-            //    scaleX = source.CompositionTarget.TransformToDevice.M11;
-            //    scaleY = source.CompositionTarget.TransformToDevice.M22;
-            //}
-        }
 
         /// <summary>
         /// gets the top most point of a UI element on the canvas
@@ -76,17 +66,12 @@ namespace Animate
         /// <summary>
         /// Gets the position of the right side of the canvas
         /// </summary>
-        public double CanvasRightSide { get => _canvas.ActualWidth; }
+        public double CanvasRightSide => _canvas.ActualWidth;
 
         /// <summary>
         /// Gets the position of the bottom side of the canvas
         /// </summary>
-        public double CanvasBottomSide {
-            get
-            {
-                //setscaling();
-                return _canvas.ActualHeight; }
-                //return 331.0; }
+        public double CanvasBottomSide =>_canvas.ActualHeight;
         }
 
     }
