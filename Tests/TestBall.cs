@@ -5,36 +5,54 @@ using Animate;
 using System.Windows.Shapes;
 using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Tests
 {
     [TestClass]
     public class TestBall
     {
+
         [TestMethod]
         public void BallMoves()
         {
-            //IEllipseAdapter mockEllipse = MockRepository.GenerateMock<IEllipseAdapter>();
-            //ICanvasAdapter mockCanvas = MockRepository.GenerateMock<ICanvasAdapter >();
-            //IMotionModel mockMotion = MockRepository.GenerateMock<IMotionModel>();
-            ////Ball ball = new Ball(mockCanvas, mockEllipse );
+            IEllipseAdapter mockEllipse = MockRepository.GenerateMock<IEllipseAdapter>();
+            bool motionRequest = false;
+            bool collisionDetectionRequest = false;
+            bool ballRedrawRequest = false;
 
-            ////Arrange
-            //mockMotion.Stub(x => x.centreActualX).Return(100.1);
-            //mockMotion.Stub(x => x.centreActualY).Return(100.1);
-            //mockEllipse.Height = 25;
-            //mockEllipse.Width = 25;
+            //Arrange
+            Ball ball = new Ball(mockEllipse);
+            mockEllipse.Height = 50;
+            mockEllipse.Width = 50;
+            ball.MoveRequest += delegate (object sender, EventArgs args)
+            {
+                motionRequest = true;
+            };
+            ball.CollisionDectectionRequest += delegate (object sender, EventArgs args)
+            {
+                collisionDetectionRequest = true;
+            };
 
-            ////Act
-            //ball.Move();
+            ball.CollisionDectectionRequest += delegate (object sender, EventArgs args)
+            {
+                ballRedrawRequest = true;
+            };
 
-            ////Assert
-            //Assert.AreEqual(ball.centreActualX, 100.1);
-            //Assert.AreEqual(ball.centreActualY, 100.1);
-            //Assert.AreEqual(ball.PosPixelX, 100);
-            //Assert.AreEqual(ball.PosPixelY, 100);
-            //mockCanvas.AssertWasCalled(x => x.SetLeft(Arg<UIElement>.Is.Anything, Arg<double>.Is.Anything));
-            //mockCanvas.AssertWasCalled(x => x.SetTop(Arg<UIElement>.Is.Anything, Arg<double>.Is.Anything));
+            ball.MoveRequest += Ball_MoveRequest;
+
+            //Act
+            ball.Move();
+
+            //Assert
+            Assert.IsTrue(motionRequest);
+            Assert.IsTrue(collisionDetectionRequest);
+            Assert.IsTrue(ballRedrawRequest);
+        }
+
+        public void Ball_MoveRequest(object sender, EventArgs e)
+        {
+
         }
     }
 }

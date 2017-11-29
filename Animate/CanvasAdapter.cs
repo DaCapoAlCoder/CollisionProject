@@ -13,8 +13,23 @@ namespace Animate
     /// </summary>
     public class CanvasAdapter : ICanvasAdapter
     {
+        #region fields
         private Canvas _canvas;
-        //private double scaleX;
+        #endregion fields
+
+        #region properties
+        /// <summary>
+        /// Gets the position of the right side of the canvas
+        /// </summary>
+        public double CanvasRightSide => _canvas.ActualWidth;
+
+        /// <summary>
+        /// Gets the position of the bottom side of the canvas
+        /// </summary>
+        public double CanvasBottomSide =>_canvas.ActualHeight;
+        #endregion properties
+
+        #region constructor
         //private double scaleY;
         /// <summary>
         /// Wrapper class to allow Canvas to be testable
@@ -23,6 +38,9 @@ namespace Animate
         {
             _canvas = canvas;
         }
+        #endregion constructor
+        
+        #region methods
         /// <summary>
         /// Set the position of the top side of the shape being drawn on the canvas
         /// </summary>
@@ -62,17 +80,8 @@ namespace Animate
         {
             return Canvas.GetLeft(element);
         }
+        #endregion methods
 
-        /// <summary>
-        /// Gets the position of the right side of the canvas
-        /// </summary>
-        public double CanvasRightSide => _canvas.ActualWidth;
-
-        /// <summary>
-        /// Gets the position of the bottom side of the canvas
-        /// </summary>
-        public double CanvasBottomSide =>_canvas.ActualHeight;
-        }
 
     }
 }

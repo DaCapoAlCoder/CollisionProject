@@ -22,6 +22,7 @@ namespace Animate
     public partial class MainWindow : Window
     {
         private Ball _ball;
+        private BallView ballview = new BallView();
         /// <summary>
         /// Main
         /// </summary>
@@ -35,6 +36,7 @@ namespace Animate
             MotionMediator motionMediator = new MotionMediator(new MotionModel(), _ball);
             //TODO: Use data binding on the canvas variable
             canvas.Children.Add(_ball.Shape);
+            canvas.Children.Add(ballview);
         }
 
         private void RenderFrame(object sender, EventArgs e )

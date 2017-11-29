@@ -3,38 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
-namespace Animate {
-
-    /// <summary>
-    /// Describes the ball used in the simulation
-    /// </summary>
-    public class Ball : IBall
+namespace Animate
+{
+    class BallModel : IBallModel
     {
         private int _radius;
         private double _xVelocity;
         private double _yVelocity;
         private double _centreActualX;
         private double _centreActualY;
-        private IEllipseAdapter _ellipseAdapter;
 
         /// <summary>
-        /// Describes a Ball used as the shape to be animated in the collision simulator
+        /// Model contains the core data and functionality of a ball in the simulation
         /// </summary>
-        public Ball(IEllipseAdapter ellipseAdapater)
+        public BallModel()
         {
             _xVelocity = 1;
             _yVelocity = 1;
             _centreActualX = 50;
             _centreActualY = 50;
             _radius = 25;
-            _ellipseAdapter = ellipseAdapater;
-            _ellipseAdapter.Height = 2 *_radius;
-            _ellipseAdapter.Width = 2 * _radius;
         }
 
         #region Properties
@@ -57,11 +46,6 @@ namespace Animate {
         }
 
         /// <summary>
-        /// Gets the shape used to describe the ball
-        /// </summary>
-        public UIElement Shape => _ellipseAdapter.Shape;
-
-        /// <summary>
         /// The actual (floating point) X position of the ball on the canvas
         /// </summary>
         public double centreActualX 
@@ -80,38 +64,9 @@ namespace Animate {
         }
 
         /// <summary>
-        /// The balls Y position rounded to a pixel value
-        /// </summary>
-        public double PosPixelY => Math.Floor(EnclosingRectTop);
-
-        /// <summary>
-        /// The ball's X position rounded to a pixel value
-        /// </summary>
-        public double PosPixelX => Math.Floor(EnclosingRectLeft);
-
-        /// <summary>
         /// The ball's radius
         /// </summary>
         public double Radius => _radius;
-
-        /// <summary>
-        /// The position of the top surface of an imaginary bounding box on the ball
-        /// </summary>
-        public double EnclosingRectTop => _centreActualY - Radius;
-        /// <summary>
-        /// The position of the bottom surface of an imaginary bounding box on the ball
-        /// </summary>
-        public double EnclosingRectBottom => _centreActualY + Radius;
-
-        /// <summary>
-        /// The position of the left surface of an imaginary bounding box on the ball
-        /// </summary>
-        public double EnclosingRectLeft => _centreActualX - Radius;
-
-        /// <summary>
-        /// The position of the right surface of an imaginary bounding box on the ball
-        /// </summary>
-        public double EnclosingRectRight => _centreActualX + Radius;
         #endregion Properties
 
         #region events
@@ -130,7 +85,7 @@ namespace Animate {
         public event EventHandler RedrawRequest;
         #endregion events
 
-
+        #region methods
         /// <summary>
         /// Final method in updating the ball's position
         /// </summary>
@@ -164,5 +119,6 @@ namespace Animate {
         {
             RedrawRequest?.Invoke(this, EventArgs.Empty);
         }
+        #endregion methods
     }
 }

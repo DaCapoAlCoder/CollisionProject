@@ -77,7 +77,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BallModel.cs" />
+    <Compile Include="BallView.xaml.cs">
+      <DependentUpon>BallView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BallViewModel.cs" />
+    <Compile Include="IBallModel.cs" />
     <Compile Include="WallCollisionModel.cs" />
+    <Page Include="BallView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,7 +97,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Ball.cs" />
-    <Compile Include="BallFactory.cs" />
     <Compile Include="CanvasAdapter.cs" />
     <Compile Include="CanvasMediator.cs" />
     <Compile Include="CollisionMediator.cs" />
