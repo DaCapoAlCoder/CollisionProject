@@ -6,6 +6,5 @@
              xmlns:local="clr-namespace:Animate"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
-    <Ellipse Name="elliposey" Fill="#FF1B1BEE" Height="{Binding Path=height}"
-                              Width="{Binding Path=width}"/>
+    <Ellipse Fill="#FF1B1BEE" Height="{Binding Path=height}" Width="{Binding Path=width}"/>
 </UserControl>

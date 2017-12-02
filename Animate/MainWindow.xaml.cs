@@ -22,7 +22,7 @@ namespace Animate
     public partial class MainWindow : Window
     {
         private Ball _ball;
-        private BallView ballview = new BallView();
+        private BallView _ballView;
         /// <summary>
         /// Main
         /// </summary>
@@ -30,13 +30,16 @@ namespace Animate
         {
             InitializeComponent();
             CompositionTarget.Rendering += RenderFrame;
+
             _ball = new Ball( new EllipseAdapter(new Ellipse()));
+            _ballView = new BallView();
+
             CanvasMediator canvasMediator = new CanvasMediator(_ball, new CanvasAdapter(canvas));
             CollisionMediator collisionMediator = new CollisionMediator(_ball, new CanvasAdapter(canvas));
             MotionMediator motionMediator = new MotionMediator(new MotionModel(), _ball);
-            //TODO: Use data binding on the canvas variable
+
             canvas.Children.Add(_ball.Shape);
-            canvas.Children.Add(ballview);
+            canvas.Children.Add(_ballView);
         }
 
         private void RenderFrame(object sender, EventArgs e )

@@ -77,14 +77,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BallModel.cs" />
-    <Compile Include="BallView.xaml.cs">
+    <Compile Include="Ball\BallModel.cs" />
+    <Compile Include="Ball\BallView.xaml.cs">
       <DependentUpon>BallView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BallViewModel.cs" />
-    <Compile Include="IBallModel.cs" />
-    <Compile Include="WallCollisionModel.cs" />
-    <Page Include="BallView.xaml">
+    <Compile Include="Ball\BallViewModel.cs" />
+    <Compile Include="Ball\IBallModel.cs" />
+    <Compile Include="Collision\WallCollisionModel.cs" />
+    <Page Include="Ball\BallView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,23 +96,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Ball.cs" />
-    <Compile Include="CanvasAdapter.cs" />
-    <Compile Include="CanvasMediator.cs" />
-    <Compile Include="CollisionMediator.cs" />
-    <Compile Include="EllipseAdapter.cs" />
-    <Compile Include="IBall.cs" />
-    <Compile Include="ICanvasAdapter.cs" />
-    <Compile Include="IEllipseAdapter.cs" />
-    <Compile Include="IMotionModel.cs" />
+    <Compile Include="Ball\Ball.cs" />
+    <Compile Include="Canvas\CanvasAdapter.cs" />
+    <Compile Include="Canvas\CanvasMediator.cs" />
+    <Compile Include="Collision\CollisionMediator.cs" />
+    <Compile Include="Ball\EllipseAdapter.cs" />
+    <Compile Include="Ball\IBall.cs" />
+    <Compile Include="Canvas\ICanvasAdapter.cs" />
+    <Compile Include="Ball\IEllipseAdapter.cs" />
+    <Compile Include="Motion\IMotionModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MotionMediator.cs" />
-    <Compile Include="MotionModel.cs" />
+    <Compile Include="Motion\MotionMediator.cs" />
+    <Compile Include="Motion\MotionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
