@@ -43,5 +43,11 @@ namespace Animate
         /// <param name="element"></param>
         /// <returns></returns>
         double GetLeft(UIElement element);
+
+        /// <summary>
+        /// Add a UIElement to the Canvas
+        /// </summary>
+        /// <param name="element"></param>
+        void AddChild(UIElement element);
     }
 }

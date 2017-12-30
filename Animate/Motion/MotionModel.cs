@@ -54,7 +54,19 @@ namespace Animate
             _yVelocity = yVelocity;
             _centreActualX = centreActualX;
             _centreActualY = centreActualY;
-            SetNextPosition();
+            //SetNextPosition();
+        }
+
+        /// <summary>
+        /// Takes the necessary speed and location data from an object and returns the next position
+        /// </summary>
+        public void ApplyMotionModel(IBallModel ball)
+        {
+            _xVelocity = ball.XVelocity;
+            _yVelocity = ball.YVelocity;
+            _centreActualX = ball.centreActualX;
+            _centreActualY = ball.centreActualY;
+            SetNextPosition(ball);
         }
 
         /// <summary>
@@ -72,10 +84,10 @@ namespace Animate
         /// <summary>
         /// Sets the next co-ordinate of the ball in both actual(floating point) and pixel terms
         /// </summary>
-        private void SetNextPosition()
+        private void SetNextPosition(IBallModel ball)
         {
-            _centreActualX = FindNextPosition(_centreActualX, _xVelocity);
-            _centreActualY = FindNextPosition(_centreActualY, _yVelocity);
+            ball.centreActualX = FindNextPosition(_centreActualX, _xVelocity);
+            ball.centreActualY = FindNextPosition(_centreActualY, _yVelocity);
         }
     }
 }

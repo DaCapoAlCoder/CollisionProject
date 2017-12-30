@@ -28,5 +28,11 @@
         /// <param name="centreActualX"></param>
         /// <param name="centreActualY"></param>
         void ApplyMotionModel(double xVelocity, double yVelocity, double centreActualX, double centreActualY);
+
+        /// <summary>
+        /// Applies the described model to the simluation object
+        /// </summary>
+        /// <param name="ballModel"></param>
+        void ApplyMotionModel(IBallModel ballModel);
     }
 }

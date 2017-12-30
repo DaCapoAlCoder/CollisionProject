@@ -24,10 +24,22 @@ namespace Animate
         /// <summary>
         /// Describes the height of a ball
         /// </summary>
-        public double height => 25;
+        public double height => _ballModel.Radius * 2;
+
+
         /// <summary>
         /// Describes the width of a ball
         /// </summary>
-        public double width => 25;
+        public double width => _ballModel.Radius * 2;
+
+        /// <summary>
+        /// Top of the ball
+        /// </summary>
+        public int Top => (int)Math.Round(_ballModel.centreActualY - _ballModel.Radius);
+
+        /// <summary>
+        /// Left side of the ball
+        /// </summary>
+        public int Left => (int)Math.Round(_ballModel.centreActualX - _ballModel.Radius);
     }
 }

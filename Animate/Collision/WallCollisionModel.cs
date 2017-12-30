@@ -8,15 +8,18 @@ namespace Animate
 {
     class WallCollisionModel 
     {
-        private IBall _ball;
+        private IBallModel _ball;
         private ICanvasAdapter _canvasAdapater;
-
+        private double EnclosingRectLeft;
+        private double EnclosingRectRight;
+        private double EnclosingRectTop;
+        private double EnclosingRectBottom;
         /// <summary>
         /// Models what happens when an object collides with a wall
         /// </summary>
         /// <param name="ball"></param>
         /// <param name="canvasAdapter"></param>
-        public WallCollisionModel(IBall ball, ICanvasAdapter canvasAdapter)
+        public WallCollisionModel(IBallModel ball, ICanvasAdapter canvasAdapter)
         {
             _ball = ball;
             _canvasAdapater = canvasAdapter;
@@ -28,16 +31,26 @@ namespace Animate
         /// </summary>
         public void WallCollision()
         {
-            if (_ball.EnclosingRectLeft <= 0.0 || _ball.EnclosingRectRight >= _canvasAdapater.CanvasRightSide)
+            DetermineEnclosingRectangle();
+            if (EnclosingRectLeft <= 0.0 || EnclosingRectRight >= _canvasAdapater.CanvasRightSide)
             {
                 _ball.XVelocity *= -1;
             }
 
-            if (_ball.EnclosingRectTop <= 0.0 || _ball.EnclosingRectBottom >= _canvasAdapater.CanvasBottomSide )
+            if (EnclosingRectTop <= 0.0 || EnclosingRectBottom >= _canvasAdapater.CanvasBottomSide )
             {
                 _ball.YVelocity *= -1;
             }
         }
+
+        private void DetermineEnclosingRectangle()
+        {
+            EnclosingRectLeft = _ball.centreActualX - _ball.Radius;
+            EnclosingRectRight = _ball.centreActualX + _ball.Radius;
+            EnclosingRectTop = _ball.centreActualY - _ball.Radius;
+            EnclosingRectBottom = _ball.centreActualY + _ball.Radius;
+        }
+
 
     }
 }

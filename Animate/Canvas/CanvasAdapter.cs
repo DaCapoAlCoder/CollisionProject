@@ -80,6 +80,15 @@ namespace Animate
         {
             return Canvas.GetLeft(element);
         }
+
+        /// <summary>
+        /// Add a UI Element to the Canvas
+        /// </summary>
+        /// <param name="element"></param>
+        public void AddChild(UIElement element)
+        {
+            _canvas.Children.Add(element);
+        }
         #endregion methods
 
 
